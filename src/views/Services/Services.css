@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
+
+.services-container {
+  padding: 40px 0;
+  margin-top: 20px;
+}
+.service-title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 4rem;
+  margin-bottom: 50px;
+  font-family: "Dancing Script", cursive;
+}
+.card-body {
+  background-color: #e4f4f4;
+}
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+.card-body .card-title {
+  margin-bottom: 50px;
+}
+.badge-title {
+  background-color: #193c3c;
+}
+.package-price {
+  text-align: center;
+}
+.card-body .button-services {
+  background-color: #193c3c;
+  align-self: center; /* Center the button horizontally */
+  width: auto; /* Ensure the button maintains its normal size */
+  padding: 10px 20px; /* Adjust padding as needed */
+}
+.card-body .service-description {
+  font-family: "libre baskerville, serif";
+  text-align: center;
+  font-size: 18px;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+.card-body .button-services {
+  background-color: #193c3c;
+  border-color: #193c3c;
+}
+
+.modal .button-services {
+  background-color: #193c3c;
+  border-color: #193c3c;
+}

@@ -6,11 +6,23 @@ import {
   Card,
   Button,
   Modal,
-  Form,
+  Carousel,
 } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import http from "../../lib/http";
 import "./Services.css";
+import CarouselImage1 from "../../assets/services/carousel1.jpg";
+import CarouselImage2 from "../../assets/services/carousel2.jpg";
+import CarouselImage3 from "../../assets/services/carousel3.jpg";
+import CarouselImage4 from "../../assets/services/carousel4.jpg";
+import CarouselImage5 from "../../assets/services/carousel5.jpg";
+import CarouselImage6 from "../../assets/services/carousel6.jpg";
+import CarouselImage7 from "../../assets/services/carousel7.jpg";
+import CarouselImage8 from "../../assets/services/carousel8.jpg";
+import CarouselImage9 from "../../assets/services/carousel9.jpg";
+import CarouselImage10 from "../../assets/services/carousel10.jpg";
+import CarouselImage11 from "../../assets/services/carousel11.jpg";
+import CarouselImage12 from "../../assets/services/carousel12.jpg";
 
 const Services = () => {
   const [services, setServices] = useState([]);
@@ -68,15 +80,7 @@ const Services = () => {
     );
   };
 
-  const weddingPackages = filterServices([
-    "wedding photo package",
-    "package 1",
-    "package 2",
-    "package 3",
-    "package 4",
-    "package 5",
-    "package 6",
-  ]);
+  const weddingPackages = filterServices(["wedding package"]);
 
   const debutPackages = filterServices(["debut package"]);
 
@@ -92,17 +96,51 @@ const Services = () => {
     return <div>{error}</div>;
   }
 
+  const formatDescriptionAsList = (description) => {
+    const items = description.split("\\n");
+    return (
+      <ul>
+        {items.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
+    );
+  };
+
   return (
     <Container className="services-container">
       <div className="service-title">
-        <h3 className="text-center mt-4">Wedding Packages</h3>
+        <h1 className="text-center mt-4">Wedding Packages</h1>
       </div>
+      <Carousel className="carousel-container mb-4">
+        <Carousel.Item>
+          <img
+            className="d-block w-100 carousel-image"
+            src={CarouselImage1}
+            alt="First slide"
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100 carousel-image"
+            src={CarouselImage2}
+            alt="Second slide"
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100 carousel-image"
+            src={CarouselImage3}
+            alt="Third slide"
+          />
+        </Carousel.Item>
+      </Carousel>
       <Row className="mt-4">
         {weddingPackages.length > 0 ? (
           weddingPackages.map((service) => (
             <Col md={4} key={service.ServiceID} className="mb-4">
-              <Card className="h-100 mb-3">
-                <Card.Body className="d-flex flex-column">
+              <Card className=" h-100 mb-3">
+                <Card.Body className="card-services d-flex flex-column">
                   <Card.Title>
                     <span className="badge-title fs-4 badge w-75 rounded-pill">
                       {service.Name}
@@ -112,7 +150,7 @@ const Services = () => {
                     ₱{service.Price.toLocaleString()}
                   </Card.Text>
                   <Card.Text className="service-description flex-grow-1">
-                    {service.Description.replace(/\\n/g, "\n")}
+                    {formatDescriptionAsList(service.Description)}
                   </Card.Text>
                   <Button
                     className="button-services mt-auto"
@@ -129,8 +167,31 @@ const Services = () => {
         )}
       </Row>
       <div className="service-title">
-        <h3 className="text-center mt-4">Debut Packages</h3>
+        <h1 className="text-center mt-4">Debut Packages</h1>
       </div>
+      <Carousel className="carousel-container mb-4">
+        <Carousel.Item>
+          <img
+            className="d-block w-100 carousel-image"
+            src={CarouselImage4}
+            alt="First slide"
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100 carousel-image"
+            src={CarouselImage5}
+            alt="Second slide"
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100 carousel-image"
+            src={CarouselImage6}
+            alt="Third slide"
+          />
+        </Carousel.Item>
+      </Carousel>
       <Row className="mt-4">
         {debutPackages.length > 0 ? (
           debutPackages.map((service) => (
@@ -146,7 +207,7 @@ const Services = () => {
                     ₱{service.Price.toLocaleString()}
                   </Card.Text>
                   <Card.Text className="service-description flex-grow-1">
-                    {service.Description.replace(/\\n/g, "\n")}
+                    {formatDescriptionAsList(service.Description)}
                   </Card.Text>
                   <Button
                     className="button-services mt-auto"
@@ -163,8 +224,52 @@ const Services = () => {
         )}
       </Row>
       <div className="service-title">
-        <h3 className="text-center mt-4">Birthday & Christening Packages</h3>
+        <h1 className="text-center mt-4">Birthday & Christening Packages</h1>
       </div>
+      <Carousel className="carousel-container mb-4">
+        <Carousel.Item>
+          <img
+            className="d-block w-100 carousel-image"
+            src={CarouselImage7}
+            alt="First slide"
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100 carousel-image"
+            src={CarouselImage8}
+            alt="Second slide"
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100 carousel-image"
+            src={CarouselImage9}
+            alt="Third slide"
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100 carousel-image"
+            src={CarouselImage10}
+            alt="Third slide"
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100 carousel-image"
+            src={CarouselImage11}
+            alt="Third slide"
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100 carousel-image"
+            src={CarouselImage12}
+            alt="Third slide"
+          />
+        </Carousel.Item>
+      </Carousel>
       <Row className="mt-4">
         {birthdayChristeningPackages.length > 0 ? (
           birthdayChristeningPackages.map((service) => (
@@ -180,7 +285,7 @@ const Services = () => {
                     ₱{service.Price.toLocaleString()}
                   </Card.Text>
                   <Card.Text className="service-description flex-grow-1">
-                    {service.Description.replace(/\\n/g, "\n")}
+                    {formatDescriptionAsList(service.Description)}
                   </Card.Text>
                   <Button
                     className="button-services mt-auto"
@@ -229,20 +334,20 @@ const Services = () => {
 
       {selectedService && (
         <Modal show={showModal} onHide={handleCloseModal}>
-          <Modal.Header closeButton>
+          <Modal.Header className="modal-services" closeButton>
             <Modal.Title>{selectedService.Name}</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body className="modal-services">
             <p>
               <strong>Description:</strong>{" "}
-              {selectedService.Description.replace(/\\n/g, "\n")}
+              {formatDescriptionAsList(selectedService.Description)}
             </p>
             <p>
               <strong>Price:</strong> ₱{selectedService.Price.toLocaleString()}
             </p>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleCloseModal}>
+            <Button className="closebutton-services" onClick={handleCloseModal}>
               Close
             </Button>
             <Button className="button-services" onClick={handleBookNow}>

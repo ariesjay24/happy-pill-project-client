@@ -1,8 +1,7 @@
-import React from "react";
-import { Routes, Route, Link } from "react-router-dom";
-import routes from "./routes";
+import { Routes, Route } from "react-router-dom";
 import Header from "./layouts/Header";
 import Footer from "./layouts/Footer";
+import routes from "./routes";
 
 const App = () => {
   return (
@@ -10,16 +9,14 @@ const App = () => {
       <Header />
       <main>
         <Routes>
-          {routes.map((route, index) => {
-            return (
-              <Route
-                key={index}
-                path={route.path}
-                element={route.element}
-                exact
-              />
-            );
-          })}
+          {routes.map((route, index) => (
+            <Route
+              key={index}
+              path={route.path}
+              element={route.element}
+              exact
+            />
+          ))}
         </Routes>
       </main>
       <Footer />

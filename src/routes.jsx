@@ -1,6 +1,4 @@
-// src/routes.jsx
 import React from "react";
-import { Navigate } from "react-router-dom"; // Add this import
 import Home from "./views/Home/Home";
 import Gallery from "./views/Gallery/Gallery";
 import Services from "./views/Services/Services";
@@ -8,13 +6,15 @@ import Bookings from "./views/Bookings/Bookings";
 import Contact from "./views/Contact/Contact";
 import Login from "./views/Login/Login";
 import Signup from "./views/Signup/Signup";
+import Faq from "./views/Faq/Faq";
 import AdminDashboard from "./views/AdminDashboard/AdminDashboard";
-import ProtectedRoute from "./views/ProtectedRoute/ProtectedRoute";
+import PaymentSuccess from "./views/PaymentSuccess/PaymentSuccess";
+import PaymentFailed from "./views/PaymentFailed/PaymentFailed";
 
 const routes = [
   {
-    path: "/",
-    element: <Home />,
+    path: "/fa",
+    element: <Faq />,
   },
   {
     path: "/gallery",
@@ -30,11 +30,8 @@ const routes = [
   },
   {
     path: "/bookings",
-    element: (
-      <ProtectedRoute role="Client">
-        <Bookings />
-      </ProtectedRoute>
-    ),
+    element: <Bookings />,
+    protected: true,
   },
   {
     path: "/login",
@@ -42,23 +39,32 @@ const routes = [
   },
   {
     path: "/signup",
-    element: <Signup isAdmin={false} />, // Regular signup
+    element: <Signup isAdmin={false} />,
   },
   {
     path: "/register-admin",
-    element: <Signup isAdmin={true} />, // Admin signup
+    element: <Signup isAdmin={true} />,
   },
   {
     path: "/admin",
-    element: (
-      <ProtectedRoute role="Admin">
-        <AdminDashboard />
-      </ProtectedRoute>
-    ),
+    element: <AdminDashboard />,
+    protected: true,
+  },
+  {
+    path: "/payment/success",
+    element: <PaymentSuccess />,
+  },
+  {
+    path: "/payment/failed",
+    element: <PaymentFailed />,
   },
   {
     path: "*",
-    element: <Navigate to="/" />, // Redirect any unknown routes to home
+    element: <Home />,
+  },
+  {
+    path: "/Faq",
+    element: <Faq />,
   },
 ];
 

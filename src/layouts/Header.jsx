@@ -50,26 +50,43 @@ const Header = () => {
         />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mx-auto">
-            {isAuthenticated && user?.Role === "Client" && (
+            {isAuthenticated && (
               <>
-                <Nav.Link as={Link} to="/" style={{ color: "white" }}>
-                  HOME
-                </Nav.Link>
-                <Nav.Link as={Link} to="/gallery" style={{ color: "white" }}>
-                  GALLERY
-                </Nav.Link>
-                <Nav.Link as={Link} to="/services" style={{ color: "white" }}>
-                  SERVICES
-                </Nav.Link>
-                <Nav.Link as={Link} to="/bookings" style={{ color: "white" }}>
-                  BOOKINGS
-                </Nav.Link>
-              </>
-            )}
-            {isAuthenticated && user?.Role === "Admin" && (
-              <>
-                <Nav.Link as={Link} to="/admin" style={{ color: "white" }}>
-                  ADMIN DASHBOARD
+                {user?.Role === "Client" && (
+                  <>
+                    <Nav.Link as={Link} to="/" style={{ color: "white" }}>
+                      HOME
+                    </Nav.Link>
+                    <Nav.Link
+                      as={Link}
+                      to="/gallery"
+                      style={{ color: "white" }}
+                    >
+                      GALLERY
+                    </Nav.Link>
+                    <Nav.Link
+                      as={Link}
+                      to="/services"
+                      style={{ color: "white" }}
+                    >
+                      SERVICES
+                    </Nav.Link>
+                    <Nav.Link
+                      as={Link}
+                      to="/bookings"
+                      style={{ color: "white" }}
+                    >
+                      BOOKINGS
+                    </Nav.Link>
+                  </>
+                )}
+                {user?.Role === "Admin" && (
+                  <Nav.Link as={Link} to="/admin" style={{ color: "white" }}>
+                    ADMIN DASHBOARD
+                  </Nav.Link>
+                )}
+                <Nav.Link as={Link} to="/chat" style={{ color: "white" }}>
+                  CHAT
                 </Nav.Link>
               </>
             )}

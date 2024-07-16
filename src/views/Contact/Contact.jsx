@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "react-bootstrap/Button";
 import "./Contact.css";
 import ContactImage from "../../assets/contactImage.jpg"; // Update this path to match your actual path
 
@@ -32,18 +33,20 @@ const Contact = () => {
               <label>Message*</label>
               <textarea placeholder="Enter Your Message Here"></textarea>
             </div>
-            <button type="submit" className="btn btn-dark">
+            <Button type="submit" className="contact-btn">
               Send
-            </button>
+            </Button>
           </form>
         </div>
         <div className="contact-image">
           <img src={ContactImage} alt="Contact" />
         </div>
       </div>
-      <div className="follow-instagram">
+      <div className="follow-instagram ">
         <h3>FOLLOW ME ON INSTAGRAM</h3>
-        <p>@happypillphoto</p>
+        <a href="https://www.instagram.com/happypillphoto/">
+          <p>@happypillphoto</p>
+        </a>
       </div>
     </div>
   );

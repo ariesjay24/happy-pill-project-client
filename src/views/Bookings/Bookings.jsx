@@ -124,12 +124,12 @@ const Bookings = ({ user }) => {
     try {
       setLoading(true);
       const api = http();
-      await api.post("/bookings", {
+      const response = await api.post("/bookings", {
         ...form,
         bookingDate: selectedDate.toISOString().split("T")[0],
       });
-      fetchBookings();
-      window.location.reload();
+      const bookingId = response.data.booking.BookingID;
+      await handlePayment(bookingId);
     } catch (error) {
       console.error("Error creating booking:", error);
       setError("Failed to create booking");

@@ -93,7 +93,7 @@
   text-align: center;
   position: relative;
   width: 100%;
-  padding-bottom: 100px;
+  margin-top: 2rem;
 }
 
 .testimonial-title {
@@ -116,22 +116,24 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  margin-bottom: 1rem;
 }
 
 .testimonial-image {
-  height: 600px;
+  height: 500px;
   width: 90%;
   object-fit: cover;
 }
 .testimonial-quote {
   position: absolute;
-  top: 470px;
+  top: 350px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: #ffffff;
   background-color: #193c3c;
   padding: 20px;
+  padding-top: 30px;
   max-width: 90%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   font-family: "Libre Baskerville", serif;
@@ -148,6 +150,7 @@
   justify-content: center;
   padding: 50px;
   position: relative;
+  margin-bottom: 3rem;
 }
 
 .image-container {
@@ -179,12 +182,7 @@
 }
 
 .text-container p {
-  font-size: 1.5rem;
-}
-
-.blockquote {
-  font-size: 1.2rem;
-  margin-top: 20px;
+  font-size: 18px;
 }
 
 .btn-light {
@@ -326,4 +324,235 @@ h3 {
 
 .back-to-top:focus {
   outline: none;
+}
+/* General styles */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Mobile styles */
+@media (max-width: 1200px) {
+  .image-collage-container {
+    grid-template-areas:
+      "image1 image2"
+      "image3 image4"
+      "image5 image5";
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .image1,
+  .image2,
+  .image3,
+  .image4,
+  .image5 {
+    height: 250px;
+  }
+
+  .testimonial-quote {
+    top: auto;
+    left: auto;
+    transform: none;
+    position: relative;
+    margin-top: -150px;
+    padding: 10px;
+    font-size: 1rem;
+    max-width: 90%;
+  }
+
+  .section-container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .image-container,
+  .text-container {
+    max-width: 100%;
+    margin-left: 0;
+    margin-top: 20px;
+  }
+
+  .text-container {
+    padding: 20px;
+    font-size: 1rem;
+  }
+
+  .parallax-overlay h1 {
+    font-size: 3rem;
+  }
+
+  .about-content-container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .about-image,
+  .about-content {
+    max-width: 100%;
+    margin-right: 0;
+    height: auto;
+  }
+
+  .about-content h2,
+  h3 {
+    font-size: 2rem;
+  }
+
+  .about-content p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .image-collage-container {
+    grid-template-areas:
+      "image1"
+      "image2"
+      "image3"
+      "image4"
+      "image5";
+    grid-template-columns: 1fr;
+  }
+
+  .image1,
+  .image2,
+  .image3,
+  .image4,
+  .image5 {
+    height: 200px;
+  }
+
+  .testimonial-section {
+    padding: 20px 10px;
+  }
+
+  .testimonial-title {
+    font-size: 2rem;
+  }
+
+  .testimonial-content {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0;
+  }
+
+  .testimonial-image {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    margin-top: 100px;
+  }
+
+  .testimonial-quote {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin-top: -150px;
+    padding: 10px;
+    font-size: 1rem;
+    max-width: 90%;
+  }
+
+  .text-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .text-container p {
+    font-size: 1rem;
+  }
+
+  .parallax-overlay h1 {
+    font-size: 2rem;
+  }
+
+  .about-content-container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .about-image,
+  .about-content {
+    max-width: 100%;
+    margin-right: 0;
+    height: auto;
+  }
+
+  .about-image {
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .about-content h2,
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  .about-content p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .text-overlay {
+    font-size: 2rem;
+  }
+
+  .testimonial-title {
+    font-size: 2rem;
+    margin-top: 300px;
+  }
+
+  .testimonial-quote {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 0.9rem;
+    max-width: 90%;
+  }
+
+  .section-container {
+    padding: 10px;
+  }
+
+  .text-container h2 {
+    font-size: 1.2rem;
+  }
+
+  .text-container p {
+    font-size: 0.8rem;
+  }
+
+  .parallax-overlay h1 {
+    font-size: 1.5rem;
+  }
+
+  .about-content-container {
+    padding: 10px;
+  }
+
+  .about-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .about-content {
+    max-width: 100%;
+    padding: 20px;
+  }
+
+  .about-content h2,
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  .about-content p {
+    font-size: 0.8rem;
+  }
 }

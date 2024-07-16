@@ -75,13 +75,14 @@ const Home = () => {
         </div>
         <div className="testimonial-content">
           <img src={TImage} alt="Alice & JBoy" className="testimonial-image" />
-          <blockquote className="testimonial-quote pt-4 ">
+          <blockquote className="testimonial-quote">
             <p>
               "The Happy Pill Project captured our love in such a magical way.{" "}
               <br />
               Looking through our photos feels like reliving our special day all
-              over again. <br /> Their attention to detail and ability to
-              capture genuine emotions is truly remarkable."
+              over again. <br />
+              Their attention to detail and ability to capture genuine emotions
+              is truly remarkable."
             </p>
             <footer className="blockquote-footer mt-5">Alice & JBoy</footer>
           </blockquote>
@@ -125,33 +126,38 @@ const Home = () => {
             style={{ backgroundImage: `url(${AboutImage})` }}
           ></div>
           <div className="about-content">
-            <h2>
-              Hi, I'm Jhun Leowin
-              <br />
-              <h3>I'm the owner of Happy Pill Project</h3>
-            </h2>
+            <h2>Hi, I'm Jhun Leowin</h2>
+            <h3>I'm the owner of Happy Pill Project</h3>
+            <hr />
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              <br /> Sed do eiusmod tempor incididunt ut labore et dolore <br />
-              magna aliqua. Ut enim ad minim veniam, quis nostrud
-              <br /> exercitation ullamco laboris nisi ut aliquip ex ea <br />
-              commodo consequat.
+              Happy Pill Project started in 2019 and has grown significantly
+              over the years. As more clients book our services, they come to
+              see Happy Pill Project as an integral part of their cherished
+              memories. We are proud to be a part of your special moments,
+              capturing them with the utmost care and professionalism.
             </p>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              <br /> Sed do eiusmod tempor incididunt ut labore et dolore <br />
-              magna aliqua. Ut enim ad minim veniam, quis nostrud
-              <br /> exercitation ullamco laboris nisi ut aliquip ex ea <br />
-              commodo consequat.
+              Our clients have consistently appreciated the wonderful services
+              we offer, from wedding photography to birthday and christening
+              events. Our commitment to delivering high-quality and heartfelt
+              photographs has made us a trusted name in the industry.
             </p>
-            <button className="btn btn-light mt-5 fw-bold p-2 px-4">
-              <a href="/bookings" className="btn-book">
-                Book Now
-              </a>
-            </button>
+            <div className="d-flex justify-content-center mt-5">
+              <button className="btn btn-light fw-bold p-2 px-4 me-4">
+                <a href="/bookings" className="btn-book">
+                  Book Now
+                </a>
+              </button>
+              <button className="btn btn-light fw-bold p-2 px-4">
+                <a href="/Faq" className="btn-book">
+                  About Us
+                </a>
+              </button>
+            </div>
           </div>
         </div>
       </div>
+
       {showButton && (
         <button onClick={scrollToTop} className="back-to-top">
           ↑

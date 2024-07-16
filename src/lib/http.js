@@ -1,17 +1,17 @@
 import axios from "axios";
 
-// Create an axios instance with the given options
 const http = (options = {}) => {
-  const token = localStorage.getItem("token"); // Get token from local storage
+  const token = localStorage.getItem("token"); // Ensure token is stored in local storage
   const headers = {
     Accept: "application/json",
-    Authorization: `Bearer ${token}`, // Include token in headers
+    Authorization: `Bearer ${token}`,
     ...options.headers,
   };
 
   return axios.create({
     baseURL: import.meta.env.VITE_API || "http://127.0.0.1:8000/api",
     headers,
+    withCredentials: true, // Include this line to ensure cookies are sent
   });
 };
 

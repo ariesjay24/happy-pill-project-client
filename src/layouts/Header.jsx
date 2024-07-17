@@ -85,9 +85,6 @@ const Header = () => {
                     ADMIN DASHBOARD
                   </Nav.Link>
                 )}
-                <Nav.Link as={Link} to="/chat" style={{ color: "white" }}>
-                  CHAT
-                </Nav.Link>
               </>
             )}
           </Nav>

@@ -12,11 +12,14 @@ import { Link, useNavigate } from "react-router-dom";
 import http from "../../lib/http";
 import "./Login.css";
 import LoginImage from "../../assets/login-image.jpg"; // Import your image here
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const Login = () => {
   const api = http();
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
   const [showSuccessToast, setShowSuccessToast] = useState(false);
@@ -78,12 +81,22 @@ const Login = () => {
                 </Form.Group>
                 <Form.Group className="mb-2">
                   <Form.Label>Password</Form.Label>
-                  <Form.Control
-                    type="password"
-                    value={Password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Enter your password"
-                  />
+                  <div className="input-group">
+                    <Form.Control
+                      type={showPassword ? "text" : "password"}
+                      value={Password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      placeholder="Enter your password"
+                    />
+                    <Button
+                      variant="outline-secondary"
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      <FontAwesomeIcon
+                        icon={showPassword ? faEyeSlash : faEye}
+                      />
+                    </Button>
+                  </div>
                 </Form.Group>
                 <Form.Group className="mb-1 text-center">
                   <Button className="btn-login mt-3" type="submit">

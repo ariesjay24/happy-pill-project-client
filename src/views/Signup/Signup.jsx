@@ -22,6 +22,7 @@ const Signup = ({ isAdmin }) => {
   const [Password, setPassword] = useState("");
   const [Role] = useState(isAdmin ? "Admin" : "Client");
   const [Address, setAddress] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
   const [showSuccessToast, setShowSuccessToast] = useState(false);
@@ -106,11 +107,19 @@ const Signup = ({ isAdmin }) => {
                 </Form.Group>
                 <Form.Group className="mb-1">
                   <Form.Label>Password</Form.Label>
-                  <Form.Control
-                    type="password"
-                    value={Password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
+                  <div className="input-group">
+                    <Form.Control
+                      type={showPassword ? "text" : "password"}
+                      value={Password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <Button
+                      variant="outline-secondary"
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? "Hide" : "Show"}
+                    </Button>
+                  </div>
                 </Form.Group>
                 <Form.Group className="mb-1">
                   <Form.Label>Role</Form.Label>

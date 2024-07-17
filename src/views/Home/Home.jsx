@@ -157,12 +157,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-
-      {showButton && (
-        <button onClick={scrollToTop} className="back-to-top">
-          ↑
-        </button>
-      )}
     </>
   );
 };

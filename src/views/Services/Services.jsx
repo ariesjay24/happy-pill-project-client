@@ -23,6 +23,7 @@ import CarouselImage9 from "../../assets/services/carousel9.jpg";
 import CarouselImage10 from "../../assets/services/carousel10.jpg";
 import CarouselImage11 from "../../assets/services/carousel11.jpg";
 import CarouselImage12 from "../../assets/services/carousel12.jpg";
+import SameDayEdit from "../../assets/SDE.mp4"; // Import your video file
 
 const Services = () => {
   const [services, setServices] = useState([]);
@@ -81,12 +82,8 @@ const Services = () => {
   };
 
   const weddingPackages = filterServices(["wedding package"]);
-
   const debutPackages = filterServices(["debut package"]);
-
-  const birthdayChristeningPackages = filterServices([
-    "birthday & christening package",
-  ]);
+  const birthdayChristeningPackages = filterServices(["b/c package"]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -115,21 +112,21 @@ const Services = () => {
       <Carousel className="carousel-container mb-4">
         <Carousel.Item>
           <img
-            className="d-block w-100 carousel-image"
+            className="d-block w-100 carousel-image-services"
             src={CarouselImage1}
             alt="First slide"
           />
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="d-block w-100 carousel-image"
+            className="d-block w-100 carousel-image-services"
             src={CarouselImage2}
             alt="Second slide"
           />
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="d-block w-100 carousel-image"
+            className="d-block w-100 carousel-image-services"
             src={CarouselImage3}
             alt="Third slide"
           />
@@ -172,21 +169,21 @@ const Services = () => {
       <Carousel className="carousel-container mb-4">
         <Carousel.Item>
           <img
-            className="d-block w-100 carousel-image"
+            className="d-block w-100 carousel-image-services"
             src={CarouselImage4}
             alt="First slide"
           />
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="d-block w-100 carousel-image"
+            className="d-block w-100 carousel-image-services"
             src={CarouselImage5}
             alt="Second slide"
           />
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="d-block w-100 carousel-image"
+            className="d-block w-100 carousel-image-services"
             src={CarouselImage6}
             alt="Third slide"
           />
@@ -229,42 +226,42 @@ const Services = () => {
       <Carousel className="carousel-container mb-4">
         <Carousel.Item>
           <img
-            className="d-block w-100 carousel-image"
+            className="d-block w-100 carousel-image-services"
             src={CarouselImage7}
             alt="First slide"
           />
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="d-block w-100 carousel-image"
+            className="d-block w-100 carousel-image-services"
             src={CarouselImage8}
             alt="Second slide"
           />
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="d-block w-100 carousel-image"
+            className="d-block w-100 carousel-image-services"
             src={CarouselImage9}
             alt="Third slide"
           />
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="d-block w-100 carousel-image"
+            className="d-block w-100 carousel-image-services"
             src={CarouselImage10}
             alt="Third slide"
           />
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="d-block w-100 carousel-image"
+            className="d-block w-100 carousel-image-services"
             src={CarouselImage11}
             alt="Third slide"
           />
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="d-block w-100 carousel-image"
+            className="d-block w-100 carousel-image-services"
             src={CarouselImage12}
             alt="Third slide"
           />
@@ -331,6 +328,14 @@ const Services = () => {
           <div>No add-ons available</div>
         )}
       </Row>
+
+      <div className="text-center mt-4">
+        <h2 className="video-title">Same Day Edit</h2>
+        <video width="850" height="500" controls>
+          <source src={SameDayEdit} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
 
       {selectedService && (
         <Modal show={showModal} onHide={handleCloseModal}>

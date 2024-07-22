@@ -12,20 +12,6 @@ const Footer = () => {
             <div className="text-left py-3">
               <p>&copy; 2024 by Happy Pill Project. All Rights Reserved.</p>
             </div>
-            <div className="footer-links">
-              <Nav.Link as={Link} to="/home" className="footer-nav-link">
-                HOME
-              </Nav.Link>
-              <Nav.Link as={Link} to="/contact" className="footer-nav-link">
-                CONTACT
-              </Nav.Link>
-              <Nav.Link as={Link} to="/gallery" className="footer-nav-link">
-                GALLERY
-              </Nav.Link>
-              <Nav.Link as={Link} to="/services" className="footer-nav-link">
-                SERVICES
-              </Nav.Link>
-            </div>
           </Col>
         </Row>
       </Container>

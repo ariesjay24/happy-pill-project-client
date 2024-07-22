@@ -20,17 +20,44 @@ const Signup = ({ isAdmin }) => {
   const [Email, setEmail] = useState("");
   const [PhoneNumber, setPhoneNumber] = useState("");
   const [Password, setPassword] = useState("");
-  const [Role] = useState(isAdmin ? "Admin" : "Client");
+  const [ConfirmPassword, setConfirmPassword] = useState(""); // New state for confirm password
   const [Address, setAddress] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
   const [showSuccessToast, setShowSuccessToast] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const navigate = useNavigate();
 
+  const passwordValidation = (password) => {
+    const minLength = /.{8,}/;
+    const hasUpperCase = /[A-Z]/;
+    const hasNumber = /\d/;
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/;
+
+    return (
+      minLength.test(password) &&
+      hasUpperCase.test(password) &&
+      hasNumber.test(password) &&
+      hasSpecialChar.test(password)
+    );
+  };
+
   async function submit(e) {
     e.preventDefault();
+
+    if (Password !== ConfirmPassword) {
+      setToastMessage("Passwords do not match.");
+      setShowToast(true);
+      return;
+    }
+
+    if (!passwordValidation(Password)) {
+      setToastMessage(
+        "Password must be at least 8 characters long, include an uppercase letter, a number, and a special character."
+      );
+      setShowToast(true);
+      return;
+    }
 
     try {
       const body = {
@@ -39,7 +66,7 @@ const Signup = ({ isAdmin }) => {
         Email,
         PhoneNumber,
         Password,
-        Role,
+        Role: isAdmin ? "Admin" : "Client",
         Address,
       };
 
@@ -54,7 +81,11 @@ const Signup = ({ isAdmin }) => {
         navigate("/login");
       }, 2000);
     } catch (e) {
-      setToastMessage("Registration failed. Please check your details.");
+      const errors = e.response?.data?.errors;
+      const errorMessage = errors
+        ? Object.values(errors).flat().join(", ")
+        : "Registration failed. Please check your details.";
+      setToastMessage(errorMessage);
       setShowToast(true);
     }
   }
@@ -107,23 +138,19 @@ const Signup = ({ isAdmin }) => {
                 </Form.Group>
                 <Form.Group className="mb-1">
                   <Form.Label>Password</Form.Label>
-                  <div className="input-group">
-                    <Form.Control
-                      type={showPassword ? "text" : "password"}
-                      value={Password}
-                      onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <Button
-                      variant="outline-secondary"
-                      onClick={() => setShowPassword(!showPassword)}
-                    >
-                      {showPassword ? "Hide" : "Show"}
-                    </Button>
-                  </div>
+                  <Form.Control
+                    type="password"
+                    value={Password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
                 </Form.Group>
                 <Form.Group className="mb-1">
-                  <Form.Label>Role</Form.Label>
-                  <Form.Control type="text" value={Role} readOnly />
+                  <Form.Label>Confirm Password</Form.Label>
+                  <Form.Control
+                    type="password"
+                    value={ConfirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                  />
                 </Form.Group>
                 <Form.Group className="mb-1">
                   <Form.Label>Address</Form.Label>

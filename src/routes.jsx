@@ -10,10 +10,11 @@ import Faq from "./views/Faq/Faq";
 import AdminDashboard from "./views/AdminDashboard/AdminDashboard";
 import PaymentSuccess from "./views/PaymentSuccess/PaymentSuccess";
 import PaymentFailed from "./views/PaymentFailed/PaymentFailed";
+import Chat from "./views/Chat/Chat"; // Import the Chat component
 
 const routes = [
   {
-    path: "/fa",
+    path: "/faq",
     element: <Faq />,
   },
   {
@@ -59,12 +60,12 @@ const routes = [
     element: <PaymentFailed />,
   },
   {
-    path: "*",
-    element: <Home />,
+    path: "/chat",
+    element: <Chat />,
   },
   {
-    path: "/Faq",
-    element: <Faq />,
+    path: "*",
+    element: <Home />,
   },
 ];
 

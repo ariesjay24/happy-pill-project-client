@@ -69,7 +69,7 @@ const Login = () => {
             <Card className="p-4 login-card">
               <Form onSubmit={submit}>
                 <h2 className="text-center">Login</h2>
-                <p className="text-center">Welcome back</p>
+                <p className="text-center">Welcome</p>
                 <Form.Group className="mb-1">
                   <Form.Label>Email</Form.Label>
                   <Form.Control

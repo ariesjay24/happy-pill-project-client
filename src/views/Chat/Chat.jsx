@@ -3,23 +3,13 @@ import Echo from "laravel-echo";
 import Pusher from "pusher-js";
 import http from "../../lib/http";
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
-import "./Chat.css"; // Import the custom CSS file
+import "./Chat.css";
 
 const Chat = () => {
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState("");
-  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const fetchCurrentUser = async () => {
-      try {
-        const response = await http().get("/current-user");
-        setUser(response.data);
-      } catch (error) {
-        console.error("Error fetching user:", error);
-      }
-    };
-
     const fetchMessages = async () => {
       try {
         const response = await http().get("/messages");
@@ -33,7 +23,6 @@ const Chat = () => {
       }
     };
 
-    fetchCurrentUser();
     fetchMessages();
 
     window.Pusher = Pusher;
@@ -56,14 +45,9 @@ const Chat = () => {
       wsPort: import.meta.env.VITE_PUSHER_PORT,
       wssPort: import.meta.env.VITE_PUSHER_PORT,
       disableStats: true,
-      auth: {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      },
     });
 
-    window.Echo.private("chat").listen("MessageSent", (e) => {
+    window.Echo.channel("chat").listen("MessageSent", (e) => {
       setMessages((prevMessages) => [...prevMessages, e.message]);
     });
 
@@ -75,14 +59,16 @@ const Chat = () => {
   const handleSendMessage = async (e) => {
     e.preventDefault();
 
-    await http()
-      .post("/messages", { message })
-      .then(() => {
-        setMessage("");
-      })
-      .catch((error) => {
-        console.error("Error sending message:", error);
-      });
+    try {
+      await http().post("/messages", { message });
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { message }, // Adding the new message to the list
+      ]);
+      setMessage("");
+    } catch (error) {
+      console.error("Error sending message:", error.response.data);
+    }
   };
 
   return (
@@ -95,11 +81,7 @@ const Chat = () => {
               <div className="message-list">
                 {messages.map((msg, index) => (
                   <div key={index} className="message">
-                    <strong>
-                      {msg.user.FirstName} {msg.user.LastName} ({msg.user.Role}
-                      ):
-                    </strong>
-                    {msg.Message}
+                    {msg.message}
                   </div>
                 ))}
               </div>
@@ -111,12 +93,9 @@ const Chat = () => {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="Type a message..."
-                  disabled={!user}
                   className="me-2"
                 />
-                <Button type="submit" disabled={!user}>
-                  Send
-                </Button>
+                <Button type="submit">Send</Button>
               </Form>
             </Card.Footer>
           </Card>

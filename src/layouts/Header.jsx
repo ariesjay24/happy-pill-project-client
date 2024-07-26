@@ -1,5 +1,3 @@
-// src/components/Header/Header.js
-
 import React, { useState, useEffect } from "react";
 import { Navbar, Nav, Container, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
@@ -83,9 +81,18 @@ const Header = () => {
                   </>
                 )}
                 {user?.Role === "Admin" && (
-                  <Nav.Link as={Link} to="/admin" style={{ color: "white" }}>
-                    ADMIN DASHBOARD
-                  </Nav.Link>
+                  <>
+                    <Nav.Link as={Link} to="/admin" style={{ color: "white" }}>
+                      ADMIN DASHBOARD
+                    </Nav.Link>
+                    <Nav.Link
+                      as={Link}
+                      to="/admin/services"
+                      style={{ color: "white" }}
+                    >
+                      ADMIN SERVICES
+                    </Nav.Link>
+                  </>
                 )}
               </>
             )}

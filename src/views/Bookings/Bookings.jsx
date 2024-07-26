@@ -324,7 +324,7 @@ const Bookings = ({ user }) => {
                         size="sm"
                         onClick={() => handlePayment(booking.BookingID)}
                       >
-                        Pay with GCash
+                        Pay with PayPal
                       </Button>
                     )}
                   </td>
@@ -338,10 +338,10 @@ const Bookings = ({ user }) => {
 
       <Modal show={showPaymentModal} onHide={() => setShowPaymentModal(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>GCash Payment</Modal.Title>
+          <Modal.Title>PayPal Payment</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>Click the link below to proceed with GCash payment:</p>
+          <p>Click the link below to proceed with PayPal payment:</p>
           <a href={paymentUrl} target="_blank" rel="noopener noreferrer">
             Pay Now
           </a>

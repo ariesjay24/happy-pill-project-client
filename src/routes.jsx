@@ -8,6 +8,7 @@ import Login from "./views/Login/Login";
 import Signup from "./views/Signup/Signup";
 import Faq from "./views/Faq/Faq";
 import AdminDashboard from "./views/AdminDashboard/AdminDashboard";
+import AdminServices from "./views/AdminServices/AdminServices"; // Import the AdminServices component
 import PaymentSuccess from "./views/PaymentSuccess/PaymentSuccess";
 import PaymentFailed from "./views/PaymentFailed/PaymentFailed";
 import Chat from "./views/Chat/Chat"; // Import the Chat component
@@ -49,6 +50,11 @@ const routes = [
   {
     path: "/admin",
     element: <AdminDashboard />,
+    protected: true,
+  },
+  {
+    path: "/admin/services",
+    element: <AdminServices />,
     protected: true,
   },
   {

@@ -11,7 +11,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import http from "../../lib/http";
 import "./Signup.css";
-import SignupImage from "../../assets/signup-image.jpg"; // Import your image here
+import SignupImage from "../../assets/signup-image.jpg";
 
 const Signup = ({ isAdmin }) => {
   const api = http();
@@ -20,7 +20,7 @@ const Signup = ({ isAdmin }) => {
   const [Email, setEmail] = useState("");
   const [PhoneNumber, setPhoneNumber] = useState("");
   const [Password, setPassword] = useState("");
-  const [ConfirmPassword, setConfirmPassword] = useState(""); // New state for confirm password
+  const [ConfirmPassword, setConfirmPassword] = useState("");
   const [Address, setAddress] = useState("");
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");

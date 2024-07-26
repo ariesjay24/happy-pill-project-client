@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  Container,
   Row,
   Col,
   Card,
@@ -28,17 +27,15 @@ const Login = () => {
 
   async function submit(e) {
     e.preventDefault();
-
     try {
+      console.log("Attempting to login with POST request");
       const body = { Email, Password };
       const user = await api.post("/login", body);
       console.log(user);
       localStorage.setItem("token", user.data.token);
       localStorage.setItem("user", JSON.stringify(user.data.user));
-
       setSuccessMessage("Login successful!");
       setShowSuccessToast(true);
-
       setTimeout(() => {
         window.dispatchEvent(new Event("storage"));
         const userRole = user.data.user.Role;
@@ -49,7 +46,7 @@ const Login = () => {
         }
       }, 2000);
     } catch (e) {
-      console.log(e.response.data.message);
+      console.log(e.response?.data?.message || "Login failed");
       setToastMessage("Login failed. Please check your credentials.");
       setShowToast(true);
     }
